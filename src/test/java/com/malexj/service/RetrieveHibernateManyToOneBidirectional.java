@@ -2,8 +2,6 @@ package com.malexj.service;
 
 
 import com.malexj.configuration.AppConfigTest;
-import com.malexj.service.StudentService;
-import com.malexj.service.UniversityService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +12,7 @@ import org.springframework.test.context.junit4.AbstractTransactionalJUnit4Spring
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
-import static junit.framework.TestCase.*;
+import static junit.framework.Assert.assertEquals;
 
 @ActiveProfiles("test")
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -23,23 +21,29 @@ import static junit.framework.TestCase.*;
 public class RetrieveHibernateManyToOneBidirectional extends AbstractTransactionalJUnit4SpringContextTests {
 
     @Autowired
-    private StudentService studentService;
+    private OrdersService ordersService;
 
     @Autowired
-    private UniversityService universityService;
+    private UserService userService;
 
     @Test
-    @Rollback(value = false)
-    public void testCreateStudentAddAddress_01() {
+    @Rollback
+    public void testCreateUniversityWithStudent() {
+        /**
+         * - Создание University
+         * - добавление 3х Student
+         * - запись University в бД
+         * */
 
         //given
 
-        //when
 
+        //when
 
         // then
 
     }
+
 
 
 
