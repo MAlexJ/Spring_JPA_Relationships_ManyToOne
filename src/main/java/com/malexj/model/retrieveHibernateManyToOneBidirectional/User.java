@@ -3,9 +3,12 @@ package com.malexj.model.retrieveHibernateManyToOneBidirectional;
 import com.malexj.model.BaseEntity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
-/** http://websystique.com/hibernate/hibernate-many-to-one-bidirectional-annotation-example/ */
+/**
+ * http://websystique.com/hibernate/hibernate-many-to-one-bidirectional-annotation-example/
+ */
 
 @Entity
 @Table(name = "users")
@@ -17,16 +20,16 @@ public class User extends BaseEntity {
     @Column(name = "phone")
     private String phone;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Orders> orders;
 
     public User() {
+        orders = new ArrayList<>();
     }
 
-    public User(String name, String phone, List<Orders> orders) {
+    public User(String name, String phone) {
         this.name = name;
         this.phone = phone;
-        this.orders = orders;
     }
 
     public String getName() {
